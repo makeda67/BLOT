@@ -68,7 +68,9 @@ Blot (like the ritual that vikings do before the battles), is an app that let yo
 ### Services
 - Auth service
 
-  - a
+  - login
+  - signuo
+  - logout
 
 - Army Service
 
