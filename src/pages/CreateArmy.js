@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import withAuth from '../components/withAuth.js';
 import Errors from '../errors/Errors.js';
 import Army from '../services/army-service.js';
@@ -8,7 +9,9 @@ class CreateArmy extends Component {
   
   state = {
     name: '',
-    quantity: ''
+    quantity: '',
+    armyId: this.props.match.params.id,
+    currentGold: 300 
   }
 
   handleAddSoldiers = (quantity, soldierName, soldierId) => {
@@ -25,6 +28,12 @@ class CreateArmy extends Component {
   handleChange = (event) => {
     this.state({
       [event.target.name]: event.target.value
+    })
+  }
+
+  changeState = (currentGold) => {
+    this.setState({
+      currentGold 
     })
   }
 
@@ -54,7 +63,7 @@ class CreateArmy extends Component {
     }
 
   render() {
-    const {handleChange, handleSubmit} = this.state;
+    const {handleChange, handleSubmit, armyId, currentGold} = this.state;
     return (
       <div>
         {/* <h1>New Army</h1>
@@ -72,10 +81,12 @@ class CreateArmy extends Component {
           <button type='submit'>Create Army</button>
         </form> */}
         <h1>Modify the army</h1>
+        <h1>{currentGold}</h1>
         <form onChange={handleSubmit}>
           <label>Army name</label>
-          <input type='text' name='name' id='name' value='Army name' onChange={handleChange}/>
-          <Cards />
+          <input type='text' name='name' id='name' onChange={handleChange}/>
+          <Cards changeState={this.changeState} armyId={armyId} currentGold={currentGold}/>
+
         </form>
       </div>
     
@@ -84,4 +95,4 @@ class CreateArmy extends Component {
   }
 }
 
-export default withAuth(CreateArmy);
+export default withRouter(withAuth(CreateArmy));

@@ -19,7 +19,6 @@ class Signup extends Component {
 
     this.props.signup({ name, username, password })
       .then( (user) => {
-        console.log(user)
         this.setState({
             name: '',
             username: '',

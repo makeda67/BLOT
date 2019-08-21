@@ -10,13 +10,12 @@ class Army {
   }
 
   createArmy() {
-      console.log('service')
     return this.army.post('/army/create')
       .then(({ data }) => data);
   }
 
-  getArmy() {
-    return this.army.get('/army/get')
+  getArmy(armyId) {
+    return this.army.get(`/army/${armyId}/get`)
       .then(({ data }) => data);
   }
 

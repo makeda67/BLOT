@@ -9,10 +9,8 @@ state = {
 }
     createArmy = (e) => { 
         e.preventDefault();
-        console.log('hello')
         armyService.createArmy()
         .then((response) =>{
-            console.log(response.soldiers)
             this.setState({
                 redirect: true,
                 armyId: response._id
@@ -23,7 +21,6 @@ state = {
 
     render() {
         const {redirect, armyId} = this.state;
-        console.log(redirect)
         if(redirect === false) {
           
             return (
@@ -32,7 +29,6 @@ state = {
                 </div>
                 )
         } else {
-        //     console.log('ishere?')
             return <Redirect to={`/private/${armyId}/`} />
         }
         
