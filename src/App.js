@@ -25,17 +25,18 @@ class App extends Component {
         <AuthProvider>
           <div className="container">
             <Navbar />
+            <div className="background">
               <Switch>
                 <AnonRoute path="/signup" component={Signup} />
                 <AnonRoute path="/login" component={Login} />
-                <PrivateRoute path='/private/modify' component={ModifyArmy} />
-                <PrivateRoute path='/private/add' exact component={CreateArmy} />
-                <PrivateRoute path="/private" component={Private} />
+                <PrivateRoute path="/private" exact component={Private} />
+                <PrivateRoute path='/private/:id' exact component={CreateArmy} />
+                <PrivateRoute path='/private/modify' exact component={ModifyArmy} />
                 <PrivateRoute path='/user/edit' exact component={EditUser} />
                 <PrivateRoute path='/user' component={UserPage} />
                 <Route component={NotFound} />
               </Switch>
-              <Footer />
+            </div>
         </div>
         </AuthProvider>
       </Router>

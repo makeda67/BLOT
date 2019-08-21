@@ -40,18 +40,12 @@ class Slider extends Component {
             transform: `translateX(${this.state.translateValue}px)`,
             transition: 'transform ease-out 0.45s'
           }}>
-            {
-              this.state.images.map((image, i) => (
+            {this.state.images.map((image, i) => (
                 <Slide key={i} image={image} />
-              ))
-            }
+              ))}
         </div>
-        <LeftArrow 
-         goToPrevSlide={this.goToPrevSlide}
-        />
-        <RightArrow 
-         goToNextSlide={this.goToNextSlide}    
-        />
+        <LeftArrow goToPrevSlide={this.goToPrevSlide}/>
+        <RightArrow goToNextSlide={this.goToNextSlide}/>
       </div>
     );
   }

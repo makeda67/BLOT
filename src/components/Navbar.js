@@ -18,12 +18,17 @@ state = {
   
   render() {  
     return (
-      <div>
+      <div className='Navbar'>
         {this.props.isLoggedIn && !this.state.isLoading ? (
           <>
-            <img src="https://cdn1.iconfinder.com/data/icons/runes-vikings/205/ThorHammer-512.png" alt='Profile pic' width="20px" height="20px"></img>
+            {/* <img src="https://cdn1.iconfinder.com/data/icons/runes-vikings/205/ThorHammer-512.png" alt='Profile pic' width="20px" height="20px"></img> */}
+            <img src={this.props.user.profileImg} alt='Profile pic' width='20px' height='20px'/>
             <Link to='/user/:id'>{this.props.user.name}</Link>
-            <p>{this.props.user.gold}</p>
+              <div className='gold-container'>
+                {/* <img src='https://cdn0.iconfinder.com/data/icons/finance-colored-outlined-pixel-perfect/64/finance-20-512.png' alt='Gold' width="20%" height="100%" /> */}
+                <img src={this.props.user.goldImg} alt='Gold' width='20%' height='100%'/>
+                <p>{this.props.user.gold}</p>
+              </div>
             <button onClick={this.props.logout}>Logout</button>
           </>
         ) : (

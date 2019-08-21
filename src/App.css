@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
+ * {
+  margin: 0 auto;
+} 
+
+.background {
+  background-image: url('https://www.fireemblemwod.com/fe8/magivalg.jpg');
+  opacity: 0.5;
+  z-index: -1;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Navbar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  /* background-color: #664c40b7 */
+  background-image: url('https://image.freepik.com/free-photo/old-wooden-texture-background-vintage_55716-1138.jpg');
+  background-repeat: repeat;
+}
+
+.Navbar img {
+  margin-left: 5%;
+  align-self: center;
+}
+
+.Navbar a {
+  width: 40%;
+  padding-top: 5%;
+  padding-bottom: 3%;
+  text-decoration: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.gold-container {
+  display: flex;
+  background-color: rgb(54, 56, 56);
+  border-radius: 20% 20%;
+  color: yellow;
+  width: 23%;
+  height: 7%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  justify-content: space-around;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-Footer {
+.Footer {
   display: flex;
   justify-content: center;
+  background-color: #525355;
+}
+
+.Footer img {
+  border-radius: 50%;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import withAuth from '../components/withAuth.js';
 import Slider from '../components/Slider.js';
+import Footer from '../components/Footer.js';
 
 class Private extends Component {
   render() {
@@ -33,6 +34,7 @@ class Private extends Component {
         </div>
         <Slider />
       </div>
+      <Footer />
       </>
     )
   }
