@@ -67,18 +67,18 @@ class Cards extends Component {
 
         const {armies, message} = this.state;
         return (
-            <div>
+            <div className='army-container-wrapper'>
                 {armies.length > 0 ? armies.map((army, index) => {
               
                     return (
                         <article key={army._id} className='army-container'>
                             <form>
                                 <p><img src={army.img} alt='Unit icon' /></p>
-                                <p>{army.name}</p>
-                                <p>{army.price}</p>
-                                <p>{army.description}</p>
+                                <h3>{army.name}</h3>
+                                <p className='gold-card'>{army.price}</p>
+                                <p className='p-card'>{army.description}</p>
 
-                                <input type='number' name={`quantity${index}`} id='quantity' value={this.state.quantity} onChange={this.handleChange}/>
+                                <input type='number' name={`quantity${index}`} id='quantity' value={this.state.quantity} onChange={this.handleChange} placeholder='Quantity'/>
                             </form>
 
                             

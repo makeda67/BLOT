@@ -25,10 +25,12 @@ state = {
           
             return (
                 <div>
-                   <button onClick={this.createArmy}>jjjjjjjjj</button> 
+                   <button onClick={this.createArmy} className='button-create'><img src="https://cdn.shopify.com/s/files/1/0478/9073/products/300_rotated_1024x1024.jpg?v=1546971612" alt="Button" weight="50px" height="50px" align="center"></img>
+                   <p className='p-special'>+</p>
+                   </button> 
                 </div>
                 )
-        } else {
+        } else {           
             return <Redirect to={`/private/${armyId}/`} />
         }
         

@@ -4,6 +4,7 @@ import withAuth from '../components/withAuth.js';
 import Errors from '../errors/Errors.js';
 import Army from '../services/army-service.js';
 import Cards from '../components/Cards';
+import Footer from '../components/Footer.js';
 
 class CreateArmy extends Component {
   
@@ -66,28 +67,15 @@ class CreateArmy extends Component {
     const {handleChange, handleSubmit, armyId, currentGold} = this.state;
     return (
       <div>
-        {/* <h1>New Army</h1>
-        <form onChange={handleSubmit}>
-          <label>Army name</label>
-          <input type='text' name='name' id='name' value='Army name' onChange={handleChange}/>
-          <h3>Troops:</h3>
-          <div className="soldier-card">
-            <Cards />
-            <label>Quantity:</label>
-            <input type='number' name='quantity' id='quantity' vale='quantity' onChange={handleChange}/>
-          </div> 
-          
-          
-          <button type='submit'>Create Army</button>
-        </form> */}
         <h1>Modify the army</h1>
         <h1>{currentGold}</h1>
         <form onChange={handleSubmit}>
-          <label>Army name</label>
-          <input type='text' name='name' id='name' onChange={handleChange}/>
+          <label className='army-name'>Army name</label>
+          <input type='text' name='name' id='name' onChange={handleChange} placeholder='Army name'/>
           <Cards changeState={this.changeState} armyId={armyId} currentGold={currentGold}/>
 
         </form>
+        <Footer />
       </div>
     
     
