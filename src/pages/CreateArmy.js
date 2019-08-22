@@ -68,7 +68,7 @@ class CreateArmy extends Component {
     return (
       <div>
         <h1>Modify the army</h1>
-        <h1>{currentGold}</h1>
+        <h1 className='h1-currentgold'>{currentGold}</h1>
         <form onChange={handleSubmit}>
           <label className='army-name'>Army name</label>
           <input type='text' name='name' id='name' onChange={handleChange} placeholder='Army name'/>
