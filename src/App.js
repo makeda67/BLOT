@@ -27,6 +27,7 @@ class App extends Component {
             <Navbar />
             <div className="background">
               <Switch>
+                <AnonRoute path="/" component={Signup} />
                 <AnonRoute path="/signup" component={Signup} />
                 <AnonRoute path="/login" component={Login} />
                 <PrivateRoute path="/private" exact component={Private} />
