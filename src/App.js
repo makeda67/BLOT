@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/Navbar.js';
 import AnonRoute from './components/AnonRoute.js';
 import PrivateRoute from './components/PrivateRoute.js';
-import Footer from './components/Footer.js';
 import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
@@ -27,14 +26,14 @@ class App extends Component {
             <Navbar />
             <div className="background">
               <Switch>
-                <AnonRoute path="/" component={Signup} />
-                <AnonRoute path="/signup" component={Signup} />
-                <AnonRoute path="/login" component={Login} />
+                <AnonRoute path="/" exact component={Signup} />
+                <AnonRoute path="/signup" exact component={Signup} />
+                <AnonRoute path="/login" exact component={Login} />
                 <PrivateRoute path="/private" exact component={Private} />
                 <PrivateRoute path='/private/:id' exact component={CreateArmy} />
                 <PrivateRoute path='/private/modify' exact component={ModifyArmy} />
                 <PrivateRoute path='/user/edit' exact component={EditUser} />
-                <PrivateRoute path='/user' component={UserPage} />
+                <PrivateRoute path='/user/:id' exact component={UserPage} />
                 <Route component={NotFound} />
               </Switch>
             </div>

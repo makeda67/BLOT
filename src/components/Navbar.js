@@ -23,7 +23,7 @@ state = {
           <>
             <img src="https://cdn1.iconfinder.com/data/icons/runes-vikings/205/ThorHammer-512.png" alt='Profile pic' width="40px" height="40px"></img>
             {/* <img src={this.props.user.profileImg} alt='Profile pic' width='20px' height='20px'/> */}
-            <Link to='/user/:id'>{this.props.user.name}</Link>
+            <Link to={`/user/${this.props.user._id}`}>{this.props.user.name}</Link>
               <div className='gold-container'>
                 {/* <img src='https://cdn0.iconfinder.com/data/icons/finance-colored-outlined-pixel-perfect/64/finance-20-512.png' alt='Gold' width="20%" height="100%" /> */}
                 <img src={this.props.user.goldImg} alt='Gold' width='20%' height='100%'/>
