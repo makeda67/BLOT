@@ -18,7 +18,7 @@ class Signup extends Component {
     const password = this.state.password;
 
     this.props.signup({ name, username, password })
-      .then( (user) => {
+      .then((user) => {
         this.setState({
             name: '',
             username: '',

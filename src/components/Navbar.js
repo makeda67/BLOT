@@ -27,7 +27,7 @@ state = {
                 <img src={this.props.user.goldImg} alt='Gold' width='20%' height='100%'/>
                 <p>{this.props.user.gold}</p>
               </div>
-            <button onClick={this.props.logout}>Logout</button>
+            <button className='logout-button' onClick={this.props.logout}>Logout</button>
           </>
         ) : (
           <>
