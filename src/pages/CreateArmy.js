@@ -9,28 +9,43 @@ import Footer from '../components/Footer.js';
 class CreateArmy extends Component {
   
   state = {
+    soldiers: [],
     name: '',
-    quantity: '',
     armyId: this.props.match.params.id,
-    currentGold: 300 
+    currentGold: 300 ,
+    Archer: 0,
+    Rider: 0,
+    Axemen: 0,
+    Swordmen: 0,
   }
 
-  handleAddSoldiers = (quantity, soldierName, soldierId) => {
-    quantity = Math.round(100*quantity)/100;
-      const newSoldierArmy = {
-        quantity,
-        soldierId
-      }
-    const { handleAddToArmy } = this.props;
-      handleAddToArmy(newSoldierArmy, soldierName);
+  componentDidMount() {
+    Army.getArmy(this.state.armyId)
+    .then(response => {
+        this.setState({
+            soldiers: response.soldiers
+        })
+    })
   }
   
 
   handleChange = (event) => {
-    this.state({
+    this.setState({
       [event.target.name]: event.target.value
+    }, () => {
+      this.changeGold()
     })
   }
+
+  changeGold = () => {
+    const { Archer, Rider, Axemen, Swordmen} = this.state;
+    const currentGold = 300 - (Archer*30) - (Rider*40) - (Axemen*40) - (Swordmen*30);
+    if(currentGold < 0 ){
+        this.changeState( 0 )
+    } else {
+        this.changeState( currentGold )
+    }
+}
 
   changeState = (currentGold) => {
     this.setState({
@@ -40,40 +55,36 @@ class CreateArmy extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { inputValue } = this.state;
-    if(inputValue === '') {
-      this.setState({
-        emptyField: true
-      })
-    } else {
-      const cohort = Errors.handleArmyCreation(inputValue);
-      cohort["soldiers"] = [];
-      Army.editArmy(cohort)
-        .then( (user) => {
-            const {setUser} = this.props;
-            setUser(user);
-            this.props.history.push('/user')
-          })
-      .catch((error) => {
-          console.log(error)
-          this.setState({
-            inputValue: ''
-          })
-        });
-      }
+    const soldiers = [];
+
+    this.state.soldiers.forEach(soldier => {
+      soldier.quantity = this.state[soldier.name];
+      soldiers.push(soldier)
+    })
+    Army.editArmy({soldiers: soldiers}, this.props.match.params.id);
     }
 
   render() {
-    const {handleChange, handleSubmit, armyId, currentGold} = this.state;
+    const { armyId, currentGold, soldiers} = this.state;
     return (
       <div>
         <h1>Modify the army</h1>
         <h1 className='h1-currentgold'>{currentGold}</h1>
-        <form onChange={handleSubmit}>
+        <form className='create-form' onSubmit={this.handleSubmit}>
+          <button className='add-army-button' type='submit'>Add Army</button>
           <label className='army-name'>Army name</label>
-          <input type='text' name='name' id='name' onChange={handleChange} placeholder='Army name'/>
-          <Cards changeState={this.changeState} armyId={armyId} currentGold={currentGold}/>
-
+          <input type='text' name='name' id='name' onChange={this.handleChange} placeholder='Army name'/>
+          <Cards 
+          changeState={this.changeState} 
+          armyId={armyId} 
+          currentGold={currentGold} 
+          handleChange={this.handleChange} 
+          Archer={this.state.Archer}
+          Rider={this.state.Rider}
+          Axemen={this.state.Axemen}
+          Swordmen={this.state.Swordmen}
+          soldiers={soldiers}
+          />
         </form>
         <Footer />
       </div>

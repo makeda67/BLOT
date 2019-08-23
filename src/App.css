@@ -57,7 +57,7 @@ h1 {
   background-repeat: repeat;
   position: fixed;
   top: 0;
-  width: 100%
+  width: 100%;
 }
 
 .Navbar img {
@@ -105,6 +105,18 @@ h1 {
   color: white;
 }
 
+.add-army-button {
+  border: 1px solid black;
+  background-color: rgba(82,83,85,0.5);
+  
+}
+
+.create-form {
+  display: flex;
+    flex-direction: column;
+
+}
+
 .p-troops {
   line-height: 1.3;
 }
@@ -135,6 +147,52 @@ h1 {
   width: 70%;
   z-index: -1;
   padding: 5%;
+}
+
+.profile-container {
+  text-align: center;
+}
+
+.user-name {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgba(82,83,85,0.5);
+  color: white;
+    padding: 8px;
+}
+
+.my-army {
+  border: 1px solid black;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    background-color: rgba(82,83,85,0.5);
+    width: 50%;
+    z-index: -1;
+    padding: 5%;
+    margin-bottom: 20%;
+  
+}
+
+.my-soldiers {
+  margin-bottom: 5%;
+  text-align: center;
+}
+
+.quantity {
+  color: lightblue;
+}
+
+.delete-button {
+  border: 1px solid red;
+  border-radius: 15px;
+  background-color: rgba(102, 29, 16, 0.555);
+  color: white;
+}
+
+.empty-army {
+  color: white;
 }
 
 .army-container img {

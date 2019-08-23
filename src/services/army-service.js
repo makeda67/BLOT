@@ -9,7 +9,7 @@ class Army {
     })
   }
 
-  createArmy() {
+  createArmy(army) {
     return this.army.post('/army/create')
       .then(({ data }) => data);
   }
@@ -19,20 +19,33 @@ class Army {
       .then(({ data }) => data);
   }
 
+  getAllArmies() {
+    return this.army.get('/army/get')
+      .then(({ data }) => data);
+  }
+
   getPopulatedArmy() {
     return this.army.get('/army/populate')
       .then(({ data }) => data);
   }
 
-  editArmy(army) {
-    return this.army.put('/army/edit', army)
+  editArmy(army, id) {
+    console.log(army)
+    return this.army.put(`army/edit/${id}`, army)
       .then(({ data }) => data);
   }
 
+  deleteOneArmy(id) {
+    return this.army.delete(`/army/${id}/delete`)
+    .then(({ data }) => data);
+};
+getMyArmy(){
+  return this.army.get(`/army/getMyArmy`)
+    .then(({ data }) => data);
 }
 
-// Instance of the service
+}
+
 const army = new Army();
 
-// Export the instance
 export default army;

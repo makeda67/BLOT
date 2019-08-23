@@ -11,9 +11,10 @@ state = {
         e.preventDefault();
         armyService.createArmy()
         .then((response) =>{
+            console.log(response)
             this.setState({
                 redirect: true,
-                armyId: response._id
+                armyId: response[0]._id
         })
         })
 
@@ -31,7 +32,7 @@ state = {
                 </div>
                 )
         } else {           
-            return <Redirect to={`/private/${armyId}/`} />
+            return <Redirect to={`/private/${armyId}`} />
         }
         
     }
